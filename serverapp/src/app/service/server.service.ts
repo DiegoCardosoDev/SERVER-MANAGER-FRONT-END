@@ -14,7 +14,7 @@ export class ServerService {
 
   constructor(private http: HttpClient) { }
 
-  //listar
+  //listar todos
   servers$ =  <Observable<CustomResponse>>
   this.http.get<CustomResponse>(`${this.apiUrl}/server/list`)
 
@@ -41,7 +41,31 @@ export class ServerService {
     catchError(this.handleError)
   );
 
+  //esse metodo filtra os servidores por ativo ou inativo
+  filter$ = (status:  Status, response: CustomResponse) => <Observable<CustomResponse>>
+  new Observable<CustomResponse>(
+    suscriber  => {
+      console.log(response);
+      suscriber.next(
+        status ===  Status.ALL ? {...response, message: ` Fiulter servers by ${status} status`} :
+        {
+          ...response,
+           message: response.data.servers.
+           filter(server  => server.status === status).length > 0 ? `servers filtred  by
+           ${status == Status.SERVER_UP ? 'SERVER_UP':  'SERVER_DOWN'} status` : `no servers of ${status} found`,
+           data:{servers: response.data.servers.filter(server  => server.status === status) }
+        }
+      );
+      suscriber.complete();
+    }
+  )
+  .pipe(
+    tap(console.log),
+    catchError(this.handleError)
+  );
 
+
+  //metodo para deletar um servidor
   delete$ = (serverId:  number) => <Observable<CustomResponse>>
   this.http.delete<CustomResponse>(`${this.apiUrl}/server/delete/${serverId}`)
 
