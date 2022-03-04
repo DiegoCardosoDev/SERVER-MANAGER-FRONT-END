@@ -26,8 +26,8 @@ export class ServerService {
         catchError(this.handleError)
       );
 
-      ping$ = (ipAnddress:  string) => <Observable<CustomResponse>>
-      this.http.get<CustomResponse>(`${this.apiUrl}/server/ping/${ipAnddress}`)
+      ping$ = (ipAndress:  string) => <Observable<CustomResponse>>
+      this.http.get<CustomResponse>(`${this.apiUrl}/server/ping/${ipAndress}`)
 
       .pipe(
         tap(console.log),
@@ -39,13 +39,13 @@ export class ServerService {
       suscriber => {
         console.log(response);
         suscriber.next(
-          status === Status.ALL ? { ...response, message: `Servers filtered by ${status} status` } :
+          status === Status.ALL ? { ...response, message: `Servidores  filtrados Por ${status} status` } :
             {
               ...response,
               message: response.data.servers
-                .filter(server => server.status === status).length > 0 ? `Servers filtered by
+                .filter(server => server.status === status).length > 0 ? `Servidores  filtrados Por:
           ${status === Status.SERVER_UP ? 'SERVER UP'
-                : 'SERVER DOWN'} status` : `No servers of ${status} found`,
+                : 'SERVER DOWN'} status` : `Nenhum servidor  com o status: ${status} encontrado...`,
               data: {
                 servers: response.data.servers
                   .filter(server => server.status === status)
@@ -70,6 +70,6 @@ export class ServerService {
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log(error);
-    return throwError(`An error occurred - Error code: ${error.status}`);
+    return throwError(`Ocorreu um Erro- Error code: ${error.status}`);
   }
 }

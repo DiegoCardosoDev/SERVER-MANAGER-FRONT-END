@@ -45,9 +45,9 @@ export class AppComponent implements OnInit {
       );
   }
 
-  pingServer(ipAddress: string): void {
-    this.filterSubject.next(ipAddress);
-    this.appState$ = this.serverService.ping$(ipAddress)
+  pingServer(ipAndress: string): void {
+    this.filterSubject.next(ipAndress);
+    this.appState$ = this.serverService.ping$(ipAndress)
       .pipe(
         map(response => {
           const index = this.dataSubject.value.data.servers.findIndex(server =>  server.id === response.data.server.id);

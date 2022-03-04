@@ -18,7 +18,7 @@
                       <span>
                           <select (ngModelChange)="filterServers($event)" name="status" ngModel="ALL"
                               class="btn btn-info" style="height: 32.91px;">
-                              <option value="ALL">ALL</option>
+                              <option value="ALL">LISTAR TODOS</option>
                               <option value="SERVER_UP">SERVER UP</option>
                               <option value="SERVER_DOWN">SERVER DOWN</option>
                           </select>
@@ -37,7 +37,7 @@
                       <thead>
                           <tr>
                               <th>Image</th>
-                              <th>IP Anddress</th>
+                              <th>IP Address</th>
                               <th>Name</th>
                               <th>Memory</th>
                               <th>Type</th>
@@ -84,7 +84,6 @@
       </div>
   </div>
 </div>
-
 <!-- Add server Modal HTML -->
 <div id="addEmployeeModal" class="modal fade">
   <div class="modal-dialog">
@@ -140,4 +139,4 @@
       </div>
   </div>
 </div>
-  <notifier-container></notifier-container>
+<notifier-container></notifier-container>
