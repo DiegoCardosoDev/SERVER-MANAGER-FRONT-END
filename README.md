@@ -1,12 +1,14 @@
 # SERVER-MANAGER-FRONT-END
 
-
  ### NO FRONT END USEI
  * ANGULAR 13
  * BOOTSTRAP
  * HTML 5
  * CSS 3
  * VS CODE PARA EDITAR OS CODIGOS
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/83510729/156898781-96dcab1c-789d-4849-8a80-4fc9546c1724.gif)
+
 
 
 
